@@ -7,6 +7,18 @@
 # [*version*]
 #   Version of hound to install
 #
+# [*package_url*]
+#   Every path supported by nanliu/staging will
+#   work here. Only tar.gz packages supported.
+#
+# [*package_dir*]
+#   Directory where the package is extracted.
+#   Every directory that follows after this can
+#   be nested inside package_dir since package_dir
+#   is a dependency for all of them.
+#
+#
+#
 class hound (
 
   $version = $hound::params::version,
