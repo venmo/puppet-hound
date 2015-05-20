@@ -1,4 +1,7 @@
-# Class hound::install
+# == Class: hound::install
+#
+# Install hound package
+#
 class hound::install {
 
   user { $hound::user:
@@ -32,7 +35,5 @@ class hound::install {
     ensure => symlink,
     target => "${hound::package_dir}/houndd",
   }
-
-  
 
 }

@@ -1,6 +1,6 @@
-# Class hound::config
+# == Class: hound::config
 #
-#
+# Generate various hound configs
 #
 class hound::config {
 
@@ -12,6 +12,7 @@ class hound::config {
     mode   => '0755',
   }
 
+  # If managed config, use params passed for config
   if $hound::managed_config {
 
     $hound_config_default = {
@@ -30,12 +31,21 @@ class hound::config {
       require => File[$hound::conf_dir],
     }
 
+  # If config is UNmanaged, it means some external script
+  # which puppet has no control over is generating config.json
   } else {
 
+    # All we really care about is config.json, not the script
+    # generating config.json.
     exec { 'check if config.json exists':
       command => '/bin/false',
       unless  => "/usr/bin/test -e ${hound::conf_dir}/config.json",
     } ->
+
+    # This is a pretty neat feature. When the external script
+    # generates config.json, it can also echo something other than
+    # 0 into hound_restart file and the next time puppet runs hound
+    # will be restarted.
     file { "${hound::tmp_dir}/hound_restart":
       ensure  => present,
       content => 0,
@@ -45,6 +55,7 @@ class hound::config {
     }
 
   }
+
   # init config
   case $::operatingsystem {
     'Ubuntu': {

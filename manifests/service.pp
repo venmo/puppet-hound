@@ -1,6 +1,6 @@
-# Class hound::service
+# == Class: hound::service
 #
-#
+# Manage hound service
 #
 class hound::service {
 
