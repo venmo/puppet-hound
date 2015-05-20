@@ -1,4 +1,12 @@
-# Class hound
+# ==  Class: hound
+#
+# Set up hound code searching tool
+#
+# === Parameters
+#
+# [*version*]
+#   Version of hound to install
+#
 class hound (
 
   $version = $hound::params::version,
