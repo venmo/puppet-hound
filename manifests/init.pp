@@ -1,6 +1,6 @@
 # ==  Class: hound
 #
-# Set up hound code searching tool
+# Hound is an extremely fast source code search engine.
 #
 # === Parameters
 #
@@ -17,8 +17,46 @@
 #   be nested inside package_dir since package_dir
 #   is a dependency for all of them.
 #
+# [*bin_dir*]
+#   houndd binary directory
 #
+# [*conf_dir*]
+#   config.json directory
 #
+# [*data_dir*]
+#   repository indices storage location
+#
+# [*tmp_dir*]
+#   tmp directory to store state info
+#
+# [*user*]
+#   user to run the daemon as
+#
+# [*group*]
+#   group to run the daemon as
+#
+# [*host*]
+#   defaults to 127.0.0.1
+#
+# [*port*]
+#   defaults to 6080
+#
+# [*managed_config*]
+#   one of the coolest feature of this module
+#   is the ability to NOT manage config.json.
+#   If this is set to 'false', you will be
+#   able to generate your own config.json.
+#   More info about this in README.
+#
+# [*max_concurrent_indexers*]
+#   Defaults to the number of processors available.
+#   This option will only take effect if $managed_config
+#   is 'true'
+#
+# [*repos*]
+#   Add repos to index. See README for more info.
+#   This option will only take effect if $managed_config
+#   is 'true'
 class hound (
 
   $version = $hound::params::version,
