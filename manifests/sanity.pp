@@ -20,10 +20,10 @@ class hound::sanity {
     $hound::tmp_dir,
   )
 
-  validate_integer(
-    [$hound::port,
-    $hound::max_concurrent_indexers],
-  )
+  validate_integer([
+    $hound::port,
+    $hound::max_concurrent_indexers,
+  ])
 
   validate_bool(
     $hound::managed_config,
@@ -31,6 +31,14 @@ class hound::sanity {
 
   validate_hash(
     $hound::repos,
+  )
+
+  # Supported package types
+  validate_re(
+    $hound::package_url,
+    [
+      '.tar.gz$',
+    ],
   )
 
 }

@@ -14,7 +14,7 @@ class hound::params {
   $tmp_dir                 = '/tmp'
   $user                    = 'hound'
   $group                   = 'hound'
-  $host                    = '192.168.50.22'
+  $host                    = '127.0.0.1'
   $port                    = 6080
   $managed_config          = true
   $max_concurrent_indexers = $::processorcount

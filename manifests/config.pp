@@ -43,9 +43,9 @@ class hound::config {
 
     # When the external script generates config.json,
     # it can also echo something other than 0 into
-    # hound_restart file and the next time puppet
+    # houndd_restart file and the next time puppet
     # runs hound will be restarted.
-    file { "${hound::tmp_dir}/hound_restart":
+    file { "${hound::tmp_dir}/houndd_restart":
       ensure  => present,
       content => 0,
       owner   => $hound::user,

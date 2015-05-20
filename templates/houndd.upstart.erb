@@ -9,7 +9,7 @@ env HOUND_CONFIG=<%= scope.lookupvar('hound::conf_dir') %>/config.json
 env HOUND_ROOT=<%= scope.lookupvar('hound::package_dir') %>
 
 script
-exec sudo -u <%= scope.lookupvar('hound::user') %> -g <%= scope.lookupvar('hound::group') %> $HOUND_BIN -conf=$HOUND_CONFIG -root=$HOUND_ROOT -addr=<%= scope.lookupvar('hound::host') %>:<%= scope.lookupvar('hound::port') %>
+  exec sudo -u <%= scope.lookupvar('hound::user') %> -g <%= scope.lookupvar('hound::group') %> $HOUND_BIN -conf=$HOUND_CONFIG -root=$HOUND_ROOT -addr=<%= scope.lookupvar('hound::host') %>:<%= scope.lookupvar('hound::port') %>
 end script
 
 respawn
