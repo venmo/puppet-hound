@@ -6,6 +6,7 @@
 #
 # [*version*]
 #   Version of hound to install
+#   Upgrade or Downgrade is possible.
 #
 # [*package_url*]
 #   Every path supported by nanliu/staging will

@@ -5,7 +5,7 @@ stop on runlevel [06]
 
 env HOUND_BIN=<%= scope.lookupvar('hound::bin_dir') %>/houndd
 env HOUND_CONFIG=<%= scope.lookupvar('hound::conf_dir') %>/config.json
-env HOUND_ROOT=<%= scope.lookupvar('hound::package_dir') %>
+env HOUND_ROOT=<%= scope.lookupvar('hound::package_dir') %>/<%= scope.lookupvar('hound::version') %>
 
 script
 exec sudo -u <%= scope.lookupvar('hound::user') %> -g <%= scope.lookupvar('hound::group') %> $HOUND_BIN -conf=$HOUND_CONFIG -root=$HOUND_ROOT -addr=<%= scope.lookupvar('hound::host') %>:<%= scope.lookupvar('hound::port') %>
