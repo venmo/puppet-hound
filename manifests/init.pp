@@ -77,6 +77,7 @@ class hound (
 ) inherits hound::params {
 
   anchor { 'hound::begin': } ->
+  class { 'hound::sanity': } ->
   class { 'hound::install': } ->
   class { 'hound::config': } ~>
   class { 'hound::service': } ->
