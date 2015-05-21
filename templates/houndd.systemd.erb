@@ -1,4 +1,4 @@
-# Hound version: <%= scope.lookupvar('hound::version') %>
+# Hound version: <%= @version %>
 #
 [Unit]
 Description=Hound daemon
@@ -6,12 +6,12 @@ Wants=basic.target
 After=basic.target network.target
 
 [Service]
-User=<%= scope.lookupvar('hound::user') %>
-Group=<%= scope.lookupvar('hound::group') %>
-ExecStart=<%= scope.lookupvar('hound::bin_dir') %>/houndd \
--conf <%= scope.lookupvar('hound::conf_dir') %>/config.json \
--root=$HOUND_ROOT \
--addr=<%= scope.lookupvar('hound::host') %>:<%= scope.lookupvar('hound::port') %>
+User=<%= @user %>
+Group=<%= @group %>
+ExecStart=<%= @bin_dir %>/houndd \
+-conf=<%= @conf_dir %>/config.json \
+-root=<%= @package_dir %> \
+-addr=<%= @host %>:<%= @port %>
 ExecReload=/bin/kill -HUP $MAINPID
 KillMode=process
 Restart=on-failure

@@ -1,2 +1,2 @@
 <%- require 'json' -%>
-<%= JSON.pretty_generate(scope.lookupvar('hound::config::hound_config')) %>
+<%= JSON.pretty_generate(@hound_config) %>

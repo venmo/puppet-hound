@@ -9,7 +9,7 @@
 # Description:       Extremely fast source code search engine.
 ### END INIT INFO
 
-# Hound version: <%= scope.lookupvar('hound::version') %>
+# Hound version: <%= @version %>
 
 # Documentation available at
 # http://refspecs.linuxfoundation.org/LSB_3.1.0/LSB-Core-generic/LSB-Core-generic/iniscrptfunc.html
@@ -18,9 +18,9 @@
 
 
 DAEMON_NAME="houndd"
-DAEMON_USER="<%= scope.lookupvar('hound::user') %>"
-DAEMON_PATH="<%= scope.lookupvar('hound::bin_dir') %>/houndd"
-DAEMON_OPTS="-conf <%= scope.lookupvar('hound::conf_dir') %>/config.json -root <%= scope.lookupvar('hound::package_dir') %> -addr <%= scope.lookupvar('hound::host') %>:<%= scope.lookupvar('hound::port') %>"
+DAEMON_USER="<%= @user %>"
+DAEMON_PATH="<%= @bin_dir %>/houndd"
+DAEMON_OPTS="-conf <%= @conf_dir %>/config.json -root <%= @package_dir %> -addr <%= @host %>:<%= @port %>"
 DAEMON_PWD="${PWD}"
 DAEMON_DESC=$(get_lsb_header_val $0 "Short-Description")
 DAEMON_PID="/var/run/${DAEMON_NAME}.pid"
