@@ -56,24 +56,25 @@ class hound::config {
   }
 
   # init config
-  case $::operatingsystem {
-    'Ubuntu': {
-      file { '/etc/init/houndd.conf':
-        mode    => '0444',
+  case $hound::init_type {
+    'sysv': {
+      file { '/etc/init.d/houndd':
+        mode    => '0555',
         owner   => 'root',
         group   => 'root',
-        content => template('hound/houndd.upstart.erb'),
-      } ->
-      file { '/etc/init.d/houndd':
-        ensure => link,
-        target => '/lib/init/upstart-job',
-        owner  => 'root',
-        group  => 'root',
-        mode   => '0755',
+        content => template('hound/houndd.sysv.erb'),
+      }
+    }
+    'systemd': {
+      file { '/lib/systemd/system/houndd.service':
+        mode    => '0644',
+        owner   => 'root',
+        group   => 'root',
+        content => template('hound/houndd.systemd.erb'),
       }
     }
     default: {
-      fail("Unsupported OS ${::operatingsystem}")
+      fail("Unsupported init type ${hound::init_type}")
     }
   }
 

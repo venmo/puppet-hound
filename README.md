@@ -114,7 +114,7 @@ The hound team doesn't seem to provide a link to the binaries, so I built one on
   * You can also restart the service from the script `service houndd restart` if you choose not to use `houndd_restart` method.
 
 ## Limitations
-* Only works with Ubuntu OS
+* Works with Ubuntu, Debian, RedHat, CentOS, Scientific Linux, Oracle Linux and Amazon
 * Only AMD64 arch is supported
 * Only `tar.gz` packages are supported
 

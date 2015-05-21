@@ -10,6 +10,7 @@ class hound::sanity {
     $hound::user,
     $hound::group,
     $hound::host,
+    $hound::init_type,
   )
 
   validate_absolute_path(
@@ -41,4 +42,40 @@ class hound::sanity {
     ],
   )
 
+  # Ensure proper init type is being used
+  if $::operatingsystem == 'Ubuntu' {
+    $supported_init = 'sysv'
+  } elsif $::operatingsystem =~ /Scientific|CentOS|RedHat|OracleLinux/ {
+    if versioncmp($::operatingsystemrelease, '7.0') < 0 {
+      $supported_init = 'sysv'
+    } else {
+      $supported_init  = 'systemd'
+    }
+  } elsif $::operatingsystem == 'Fedora' {
+    if versioncmp($::operatingsystemrelease, '12') < 0 {
+      $supported_init = 'sysv'
+    } else {
+      $supported_init = 'systemd'
+    }
+  } elsif $::operatingsystem == 'Debian' {
+    if versioncmp($::operatingsystemrelease, '8.0') < 0 {
+      $supported_init = 'sysv'
+    } else {
+      $supported_init = 'systemd'
+    }
+  } elsif $::operatingsystem == 'Amazon' {
+    $supported_init = 'sysv'
+  } else {
+    $supported_init = false
+  }
+
+  if $hound::init_type != $supported_init {
+    fail("Init type ${hound::init_type} is not \
+    supported on ${::operatingsystem} ${::operatingsystemrelease}")
+  }
+
+  # Supported kernel archs
+  if $::architecture !~ /x86_64|amd64/ {
+    fail("Unsupported kernel arch: ${::architecture}")
+  }
 }

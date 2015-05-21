@@ -42,6 +42,10 @@
 # [*port*]
 #   defaults to 6080
 #
+# [*init_type*]
+#   defaults to 'sysv'. The only other option
+#   supported is 'systemd'.
+#
 # [*managed_config*]
 #   one of the coolest features of this module
 #   is the ability to NOT manage config.json.
@@ -71,6 +75,7 @@ class hound (
   $group                   = $hound::params::group,
   $host                    = $hound::params::host,
   $port                    = $hound::params::port,
+  $init_type               = $hound::params::init_type,
   $managed_config          = $hound::params::managed_config,
   $max_concurrent_indexers = $hound::params::max_concurrent_indexers,
   $repos                   = $hound::params::repos,

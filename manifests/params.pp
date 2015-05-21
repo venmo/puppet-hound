@@ -16,6 +16,7 @@ class hound::params {
   $group                   = 'hound'
   $host                    = 'localhost'
   $port                    = 6080
+  $init_type               = 'sysv'
   $managed_config          = true
   $max_concurrent_indexers = $::processorcount
 
