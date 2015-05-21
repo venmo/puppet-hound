@@ -8,23 +8,23 @@ class hound::install {
     ensure => present,
   } ->
   group { $hound::group:
-    ensure => present;
+    ensure => present,
   } ->
 
   file { $hound::package_dir:
-    ensure => 'directory',
+    ensure => directory,
     owner  => $hound::user,
     group  => $hound::group,
     mode   => '0755',
   } ->
   file { "${hound::package_dir}/${hound::version}":
-    ensure => 'directory',
+    ensure => directory,
     owner  => $hound::user,
     group  => $hound::group,
     mode   => '0755',
   } ->
   file { $hound::data_dir:
-    ensure => 'directory',
+    ensure => directory,
     owner  => $hound::user,
     group  => $hound::group,
     mode   => '0755',

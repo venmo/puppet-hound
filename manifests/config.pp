@@ -20,7 +20,7 @@ class hound::config {
       'dbpath'                  => $hound::data_dir,
     }
 
-    $hound_config = merge($hound_config_default, $hound::repos)
+    $hound_config = deep_merge($hound_config_default, $hound::repos)
     
     file { "${hound::conf_dir}/config.json":
       ensure  => present,

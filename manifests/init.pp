@@ -43,7 +43,7 @@
 #   defaults to 6080
 #
 # [*managed_config*]
-#   one of the coolest feature of this module
+#   one of the coolest features of this module
 #   is the ability to NOT manage config.json.
 #   If this is set to 'false', you will be
 #   able to generate your own config.json.
