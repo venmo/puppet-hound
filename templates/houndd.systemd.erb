@@ -1,0 +1,21 @@
+# Hound version: <%= @version %>
+#
+[Unit]
+Description=Hound daemon
+Wants=basic.target
+After=basic.target network.target
+
+[Service]
+User=<%= @user %>
+Group=<%= @group %>
+ExecStart=<%= @bin_dir %>/houndd \
+-conf=<%= @conf_dir %>/config.json \
+-root=<%= @package_dir %> \
+-addr=<%= @host %>:<%= @port %>
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=on-failure
+RestartSec=42s
+
+[Install]
+WantedBy=multi-user.target
