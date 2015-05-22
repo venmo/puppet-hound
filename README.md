@@ -6,11 +6,10 @@ Puppet module for [Hound](https://github.com/etsy/Hound)
 1. [Getting started](#getting-started)
 2. [Proxy with Nginx](#proxy-with-nginx)
 3. [Adding repos](#adding-repos)
-4. [Fetch hound package](#fetch-hound-package)
-5. [Managed vs Unmanaged](#managed-vs-unmanaged)
-6. [Limitations](#limitations)
-7. [TODO](#todo)
-8. [Development](#development)
+4. [Managed vs Unmanaged](#managed-vs-unmanaged)
+5. [Limitations](#limitations)
+6. [TODO](#todo)
+7. [Development](#development)
 
 
 ## Getting started
@@ -96,9 +95,6 @@ class { '::hound':
   }
 }
 ```
-
-## Fetch hound package
-The hound team doesn't seem to provide a link to the binaries, so I built one on ubuntu precise64 machine, its located in the `tarballs` directory. These tarballs will **not** be available as part of the puppet module, you can only download them directly from the repo. In other words, you have to download the tarball to an accessible location and point `$hound::package_url` to that location.
 
 ## Managed vs Unmanaged
 * *Managed config.json*
