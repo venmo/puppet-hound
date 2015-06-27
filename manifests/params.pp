@@ -6,7 +6,7 @@
 class hound::params {
 
   $version                 = '0.2.0'
-  $package_url             = 'https://dl.bintray.com/venmo/hound/0.2.0_linux_amd64.tar.gz'
+  $package_url             = 'https://github.com/venmo/puppet-hound/releases/download/packages/0.2.0_linux_amd64.tar.gz'
   $package_dir             = '/opt/hound'
   $bin_dir                 = '/usr/local/bin'
   $conf_dir                = '/etc/hound'
